@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { CaseStudy } from '../data/caseStudies';
+import { caseStudies, projectPath } from '../data/caseStudies';
+import PageScripts from './PageScripts.astro';
+import ResponsiveImage from './ResponsiveImage.astro';
+import SiteFooter from './SiteFooter.astro';
+import SiteHeader from './SiteHeader.astro';
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const currentIndex = caseStudies.findIndex((item) => item.slug === study.slug);
+const previous = caseStudies[(currentIndex - 1 + caseStudies.length) % caseStudies.length];
+const next = caseStudies[(currentIndex + 1) % caseStudies.length];
+---
+
+<BaseLayout
+  title={`${study.title} — Diya Sharma`}
+  description={study.summary}
+  ogImage={study.hero.src}
+>
+  <div class:list={['case-study', `case-study--${study.theme}`]}>
+    <SiteHeader current="project" />
+
+    <main id="main">
+      <section class="case-hero" id="top" aria-labelledby="case-title">
+        <div class="case-hero__grid" aria-hidden="true"></div>
+        <svg
+          class="case-hero__thread"
+          viewBox="0 0 1440 720"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M-40 532C146 512 165 251 372 297C563 339 548 607 752 550C945 495 874 188 1091 182C1271 177 1310 349 1491 280"
+          ></path>
+        </svg>
+
+        <div class="case-hero__inner">
+          <div class="case-hero__copy">
+            <a class="back-link" href="/#work"><span aria-hidden="true">←</span> All work</a>
+            <p class="eyebrow">{study.category} · {study.year}</p>
+            <h1 id="case-title">{study.title}</h1>
+            <p class="case-hero__summary">{study.summary}</p>
+            <ul class="case-scope" aria-label="Project scope">
+              {study.scope.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="case-hero__visual" data-parallax-scope>
+            <div class="case-hero__shape" aria-hidden="true"></div>
+            <ResponsiveImage
+              {...study.hero}
+              class="case-hero__media"
+              priority
+              sizes="(max-width: 820px) calc(100vw - 3rem), min(47vw, 680px)"
+            />
+            <p class="case-hero__stamp" aria-hidden="true">
+              {study.theme === 'jahota' && 'FIELD / SYSTEM'}
+              {study.theme === 'talktube' && 'HEAR / SPEAK'}
+              {study.theme === 'nfhs' && 'TOOL / FLOW'}
+              {study.theme === 'tangible' && 'DATA / MATERIAL'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="case-shell">
+        <aside class="case-index" aria-label="Case study sections">
+          <p class="case-index__label">Case thread</p>
+          <nav>
+            <a href="#overview"><i aria-hidden="true"></i>Overview</a>
+            {
+              study.sections.map((section) => (
+                <a href={`#${section.id}`}>
+                  <i aria-hidden="true" />
+                  {section.eyebrow}
+                </a>
+              ))
+            }
+          </nav>
+        </aside>
+
+        <div class="case-content">
+          <section class="case-overview" id="overview" aria-labelledby="overview-title" data-reveal>
+            <header class="case-section__heading">
+              <p class="eyebrow">Overview</p>
+              <h2 id="overview-title">The project in one pass.</h2>
+            </header>
+            <div class="case-prose">
+              {study.overview.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+            {
+              study.metrics && (
+                <dl class="case-metrics">
+                  {study.metrics.map((metric) => (
+                    <div>
+                      <dt>{metric.value}</dt>
+                      <dd>{metric.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )
+            }
+          </section>
+
+          {
+            study.sections.map((section) => (
+              <section
+                class="case-section"
+                id={section.id}
+                aria-labelledby={`${section.id}-title`}
+                data-reveal
+              >
+                <header class="case-section__heading">
+                  <p class="eyebrow">{section.eyebrow}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                </header>
+
+                {section.intro && (
+                  <div class="case-prose">
+                    {section.intro.map((paragraph) => (
+                      <p>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+
+                {section.metrics && (
+                  <dl class="case-metrics">
+                    {section.metrics.map((metric) => (
+                      <div>
+                        <dt>{metric.value}</dt>
+                        <dd>{metric.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
+                {section.points && (
+                  <div class="case-points">
+                    {section.points.map((point) => (
+                      <article>
+                        <h3>{point.title}</h3>
+                        <p>{point.body}</p>
+                      </article>
+                    ))}
+                  </div>
+                )}
+
+                {section.bullets && (
+                  <ul class="case-bullets">
+                    {section.bullets.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.media && (
+                  <div
+                    class:list={[
+                      'case-media-grid',
+                      `case-media-grid--${section.mediaLayout ?? 'single'}`,
+                    ]}
+                  >
+                    {section.media.map((media) => (
+                      <ResponsiveImage
+                        {...media}
+                        sizes="(max-width: 820px) calc(100vw - 2rem), min(72vw, 1080px)"
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {section.note && (
+                  <p class="case-note">
+                    <span>Note</span>
+                    {section.note}
+                  </p>
+                )}
+              </section>
+            ))
+          }
+        </div>
+      </div>
+
+      <section class="case-contact" aria-labelledby="case-contact-title" data-reveal>
+        <p class="eyebrow">Project enquiries</p>
+        <h2 id="case-contact-title">Have a system that needs untangling?</h2>
+        <p>Tell me where it feels complicated. We can start there.</p>
+        <a class="button button--ink" href="/contact"
+          >Discuss a project <span aria-hidden="true">↗</span></a
+        >
+      </section>
+
+      <nav class="case-pagination" aria-label="More projects">
+        <a href={projectPath(previous.slug)}>
+          <span>Previous case study</span>
+          <strong><i aria-hidden="true">←</i> {previous.shortTitle}</strong>
+        </a>
+        <a href={projectPath(next.slug)}>
+          <span>Next case study</span>
+          <strong>{next.shortTitle} <i aria-hidden="true">→</i></strong>
+        </a>
+      </nav>
+    </main>
+
+    <SiteFooter />
+    <PageScripts />
+  </div>
+</BaseLayout>

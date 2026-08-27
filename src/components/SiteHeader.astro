@@ -1,0 +1,26 @@
+---
+interface Props {
+  current?: 'home' | 'work' | 'about' | 'contact' | 'project';
+}
+
+const { current = 'home' } = Astro.props;
+---
+
+<header class="site-header" data-site-header>
+  <a class="brand" href="/#top" aria-label="DS — Diya Sharma, home">
+    <span class="brand-mark" aria-hidden="true">DS</span>
+    <span class="brand-name">Diya Sharma</span>
+  </a>
+
+  <nav aria-label="Primary navigation">
+    <a href="/#work" aria-current={current === 'work' || current === 'project' ? 'page' : undefined}
+      >Work</a
+    >
+    <a href="/#approach">Approach</a>
+    <a href="/about" aria-current={current === 'about' ? 'page' : undefined}>About</a>
+  </nav>
+
+  <a class="header-cta" href="/contact" aria-current={current === 'contact' ? 'page' : undefined}>
+    Say hello <span aria-hidden="true">↗</span>
+  </a>
+</header>

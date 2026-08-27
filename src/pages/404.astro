@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageScripts from '../components/PageScripts.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+---
+
+<BaseLayout title="Page not found — Diya Sharma">
+  <div class="not-found">
+    <SiteHeader current="home" />
+
+    <main id="main">
+      <section class="not-found__hero" id="top">
+        <svg
+          class="not-found__thread"
+          viewBox="0 0 1440 860"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M-60 667C155 697 148 328 371 351C574 371 536 715 757 625C951 545 889 180 1111 205C1278 224 1334 402 1500 324"
+          ></path>
+        </svg>
+
+        <div class="not-found__copy">
+          <p class="eyebrow">Error 404</p>
+          <h1>This thread came loose.</h1>
+          <p>
+            The page you're looking for has moved, or never existed. Let's get you back to the work.
+          </p>
+          <div class="not-found__actions">
+            <a class="button button--ink" href="/">Back to home <span aria-hidden="true">←</span></a
+            >
+            <a class="text-link" href="/#work">See selected work ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <SiteFooter />
+    <PageScripts />
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found__hero {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 72vh;
+    padding: clamp(6rem, 12vw, 9rem) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+
+  .not-found__thread {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .not-found__thread path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-opacity: 0.22;
+    stroke-width: 2;
+  }
+
+  .not-found__copy {
+    position: relative;
+    max-width: 44rem;
+    text-align: center;
+  }
+
+  .not-found__copy h1 {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 1.05;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .not-found__copy p:not(.eyebrow) {
+    margin: 0 auto 1.75rem;
+    max-width: 34rem;
+    color: rgba(23, 20, 39, 0.72);
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageScripts from '../components/PageScripts.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { caseStudies, projectPath } from '../data/caseStudies';
+
+const projects = caseStudies.map((study) => ({
+  slug: study.slug,
+  theme: study.theme,
+  category: study.category,
+  title: study.card.title,
+  description: study.summary,
+  year: study.year,
+  facts: study.card.facts,
+  href: projectPath(study.slug),
+  primary: study.card.primary,
+  secondary: study.card.secondary,
+  layout: study.card.layout,
+}));
+---
+
+<BaseLayout>
+  <SiteHeader current="home" />
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-thread" aria-hidden="true">
+        <svg viewBox="0 0 1440 880" preserveAspectRatio="none">
+          <path
+            class="hero-thread__shadow"
+            d="M-70 590C168 666 182 257 414 347C596 417 637 723 850 620C1040 528 973 176 1198 220C1344 249 1365 385 1518 325"
+          ></path>
+          <path
+            class="hero-thread__line"
+            d="M-70 590C168 666 182 257 414 347C596 417 637 723 850 620C1040 528 973 176 1198 220C1344 249 1365 385 1518 325"
+          ></path>
+        </svg>
+        <span class="thread-node thread-node--observe">observe</span>
+        <span class="thread-node thread-node--connect">connect</span>
+        <span class="thread-node thread-node--make">make</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Diya Sharma · Interaction designer</p>
+        <h1 id="hero-title">
+          <span>I untangle</span>
+          <span class="hero-word hero-word--systems">systems.</span>
+          <span>Then make them</span>
+          <span class="hero-word hero-word--human">feel human.</span>
+        </h1>
+        <div class="hero-intro">
+          <p>
+            Through field research, systems thinking, and visual craft, I turn complex services into
+            intuitive digital experiences.
+          </p>
+          <div class="hero-actions">
+            <a class="button button--ink" href="#work"
+              >Explore selected work <span aria-hidden="true">↓</span></a
+            >
+            <a class="text-link" href="mailto:diyasharma.design@gmail.com">Discuss a project ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="hero-collage"
+        aria-label="A portrait of Diya and details from her work"
+        data-parallax-scope
+      >
+        <figure class="hero-portrait" data-parallax="8">
+          <img
+            src="/images/diya-portrait.webp"
+            srcset="/images/diya-portrait-480.webp 480w, /images/diya-portrait-900.webp 900w, /images/diya-portrait.webp 1100w"
+            sizes="(max-width: 820px) 62vw, min(23vw, 330px)"
+            alt="Diya Sharma smiling against a textured brown wall"
+            width="1100"
+            height="1955"
+            fetchpriority="high"
+          />
+          <figcaption>Curious by default</figcaption>
+        </figure>
+
+        <figure class="hero-card hero-card--field" data-parallax="-13">
+          <img
+            src="/images/jahota-field.webp"
+            srcset="/images/jahota-field-480.webp 480w, /images/jahota-field-900.webp 900w, /images/jahota-field.webp 1100w"
+            sizes="(max-width: 820px) 49vw, min(19vw, 270px)"
+            alt="Field research moments from Jahota"
+          />
+          <figcaption>In the field</figcaption>
+        </figure>
+
+        <figure class="hero-card hero-card--thread" data-parallax="15">
+          <img
+            src="/images/tangible-object.webp"
+            srcset="/images/tangible-object-480.webp 480w, /images/tangible-object-900.webp 900w, /images/tangible-object.webp 1300w"
+            sizes="(max-width: 820px) 50vw, min(19vw, 270px)"
+            alt="Crocheted tangible data representation"
+          />
+          <figcaption>At the making table</figcaption>
+        </figure>
+
+        <div class="hero-note" data-parallax="-7">
+          <span aria-hidden="true">✦</span>
+          <p>Research<br />→ system<br />→ interaction</p>
+        </div>
+      </div>
+
+      <div class="hero-footer" aria-label="Core capabilities">
+        <p>Working across</p>
+        <ul>
+          <li>Research</li>
+          <li>Product design</li>
+          <li>Service systems</li>
+          <li>Visual craft</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="section-intro work-intro" data-reveal>
+        <p class="eyebrow">Selected work · 2024–2025</p>
+        <h2 id="work-title">Four ways of meeting complexity with care.</h2>
+        <p class="section-intro__body">
+          Across villages, videos, surveys, and stitches, each project starts by paying close
+          attention to how people already move through the world.
+        </p>
+      </div>
+
+      <nav class="project-key" aria-label="Jump to a project" data-reveal>
+        <a href="#jahota"><i class="key-dot key-dot--jahota"></i>Rural AI</a>
+        <a href="#talktube"><i class="key-dot key-dot--talktube"></i>TalkTube</a>
+        <a href="#nfhs"><i class="key-dot key-dot--nfhs"></i>NFHS</a>
+        <a href="#tangible"><i class="key-dot key-dot--tangible"></i>Tangible data</a>
+      </nav>
+
+      <div class="project-list">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </section>
+
+    <section class="signal-band" aria-label="Areas of design practice">
+      <div class="signal-band__track" aria-hidden="true">
+        <span>FIELD RESEARCH</span><i>✦</i><span>SYSTEMS THINKING</span><i>✦</i><span
+          >INTERACTION DESIGN</span
+        ><i>✦</i><span>VISUAL CRAFT</span><i>✦</i>
+        <span>FIELD RESEARCH</span><i>✦</i><span>SYSTEMS THINKING</span><i>✦</i><span
+          >INTERACTION DESIGN</span
+        ><i>✦</i><span>VISUAL CRAFT</span><i>✦</i>
+      </div>
+    </section>
+
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="approach-heading" data-reveal>
+        <p class="eyebrow">A working loop</p>
+        <h2 id="approach-title">
+          Good interaction design pays attention before it asks for attention.
+        </h2>
+      </div>
+
+      <ol class="approach-loop">
+        <li data-reveal>
+          <span class="approach-verb">Observe</span>
+          <p>
+            Spend time with the people, places, constraints, and workarounds that make up the real
+            experience.
+          </p>
+        </li>
+        <li data-reveal>
+          <span class="approach-verb">Connect</span>
+          <p>
+            Map the actors, tools, and feedback loops so the system—not just the screen—becomes
+            visible.
+          </p>
+        </li>
+        <li data-reveal>
+          <span class="approach-verb">Make</span>
+          <p>
+            Turn what matters into flows and prototypes that are clear enough to use and concrete
+            enough to test.
+          </p>
+        </li>
+        <li data-reveal>
+          <span class="approach-verb">Refine</span>
+          <p>
+            Use feedback to remove friction, sharpen intent, and keep the human part of the system
+            in view.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-visual" data-reveal>
+        <div class="about-pattern" aria-hidden="true"></div>
+        <figure>
+          <img
+            src="/images/diya-portrait.webp"
+            srcset="/images/diya-portrait-480.webp 480w, /images/diya-portrait-900.webp 900w, /images/diya-portrait.webp 1100w"
+            sizes="(max-width: 820px) 72vw, min(30vw, 450px)"
+            alt="Portrait of Diya Sharma"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <p class="about-caption">Interaction designer<br />Researcher<br />Hands-on maker</p>
+      </div>
+
+      <div class="about-copy" data-reveal>
+        <p class="eyebrow">A little about me</p>
+        <h2 id="about-title">
+          I make complex ideas feel simple and human—with intent, empathy, and just the right amount
+          of craft.
+        </h2>
+        <p>
+          My work moves between research, systems, and interfaces. I care about the moment a
+          complicated service finally makes sense—and about building the clarity that gets it there.
+        </p>
+
+        <div class="experience">
+          <p><span>Experience</span><strong>Planway · User Experience Designer, Intern</strong></p>
+          <time datetime="2025-06">June–July 2025</time>
+        </div>
+
+        <ul class="capability-list" aria-label="Design capabilities">
+          <li>Web design</li>
+          <li>Mobile product design</li>
+          <li>Usability testing</li>
+          <li>Primary research</li>
+        </ul>
+
+        <a class="about-more-link" href="/about">More about me <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-orbit" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="eyebrow">Project enquiries</p>
+      <h2 id="contact-title">Have a system that needs untangling?</h2>
+      <p class="contact-copy">Tell me where it feels complicated. We can start there.</p>
+      <div class="contact-actions">
+        <a class="contact-email" href="mailto:diyasharma.design@gmail.com"
+          >diyasharma.design@gmail.com <span aria-hidden="true">↗</span></a
+        >
+        <button class="copy-button" type="button" data-copy-email="diyasharma.design@gmail.com">
+          <span data-copy-label>Copy email</span>
+        </button>
+        <span class="copy-status" aria-live="polite" data-copy-status></span>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+  <PageScripts />
+</BaseLayout>

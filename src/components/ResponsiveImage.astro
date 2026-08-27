@@ -1,0 +1,46 @@
+---
+import type { StudyMedia } from '../data/caseStudies';
+
+interface Props extends StudyMedia {
+  class?: string;
+  priority?: boolean;
+  sizes?: string;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  ratio = '16 / 9',
+  fit = 'contain',
+  baseWidth = 1100,
+  class: className,
+  priority = false,
+  sizes = '(max-width: 820px) calc(100vw - 2rem), min(76vw, 1100px)',
+} = Astro.props;
+
+const stem = src.replace(/\.webp$/, '');
+const isCaseAsset = src.includes('/case-studies/');
+const fallbackWidth = isCaseAsset ? 1800 : baseWidth;
+const srcset = isCaseAsset
+  ? `${stem}-640.webp 640w, ${stem}-1200.webp 1200w, ${src} ${fallbackWidth}w`
+  : `${stem}-480.webp 480w, ${stem}-900.webp 900w, ${src} ${fallbackWidth}w`;
+---
+
+<figure
+  class:list={['study-media', className]}
+  style={`--media-ratio: ${ratio}; --media-fit: ${fit};`}
+>
+  <div class="study-media__frame">
+    <img
+      src={src}
+      srcset={srcset}
+      sizes={sizes}
+      alt={alt}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding={priority ? 'sync' : 'async'}
+      fetchpriority={priority ? 'high' : undefined}
+    />
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>

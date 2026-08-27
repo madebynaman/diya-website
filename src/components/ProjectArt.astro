@@ -1,0 +1,77 @@
+---
+interface Props {
+  variant: 'rural' | 'talk' | 'nfhs' | 'tangible';
+}
+
+const { variant } = Astro.props;
+---
+
+<div class:list={['project-diagram', `project-diagram--${variant}`]} aria-hidden="true">
+  {
+    variant === 'rural' && (
+      <svg viewBox="0 0 760 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          class="diagram-line"
+          d="M48 176C122 176 143 84 228 84C306 84 326 176 403 176C481 176 499 84 581 84H711"
+        />
+        <path class="diagram-line diagram-line--quiet" d="M48 201H711" />
+        <circle class="diagram-node" cx="48" cy="176" r="12" />
+        <circle class="diagram-node" cx="228" cy="84" r="12" />
+        <circle class="diagram-node" cx="403" cy="176" r="12" />
+        <circle class="diagram-node" cx="581" cy="84" r="12" />
+        <circle class="diagram-node diagram-node--active" cx="711" cy="84" r="12" />
+        <path class="diagram-tick" d="M228 46V122M403 138V214M581 46V122" />
+      </svg>
+    )
+  }
+  {
+    variant === 'talk' && (
+      <svg viewBox="0 0 760 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="diagram-line" d="M78 130H682" />
+        <circle class="diagram-node" cx="126" cy="130" r="28" />
+        <circle class="diagram-node diagram-node--active" cx="304" cy="130" r="43" />
+        <circle class="diagram-node" cx="497" cy="130" r="28" />
+        <path
+          class="diagram-line diagram-line--quiet"
+          d="M126 187C183 220 247 220 304 187C362 154 439 154 497 187"
+        />
+        <path class="diagram-tick" d="M126 70V88M304 54V70M497 70V88" />
+      </svg>
+    )
+  }
+  {
+    variant === 'nfhs' && (
+      <svg viewBox="0 0 760 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect class="diagram-form" x="82" y="44" width="194" height="172" rx="2" />
+        <path class="diagram-line" d="M112 86H245M112 116H220M112 146H245M112 176H187" />
+        <path class="diagram-line" d="M276 130H468" />
+        <circle class="diagram-node diagram-node--active" cx="510" cy="130" r="43" />
+        <path class="diagram-line" d="M553 130H681" />
+        <path class="diagram-tick" d="M510 68V84M510 176V192M448 130H464M556 130H572" />
+      </svg>
+    )
+  }
+  {
+    variant === 'tangible' && (
+      <svg viewBox="0 0 760 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="diagram-line diagram-line--quiet" d="M86 199H674" />
+        <rect class="diagram-block" x="128" y="133" width="65" height="66" rx="2" />
+        <rect
+          class="diagram-block diagram-block--active"
+          x="252"
+          y="80"
+          width="65"
+          height="119"
+          rx="2"
+        />
+        <rect class="diagram-block" x="376" y="108" width="65" height="91" rx="2" />
+        <rect class="diagram-block" x="500" y="48" width="65" height="151" rx="2" />
+        <path class="diagram-line" d="M160 120V94H284V68M408 95V76H532V32" />
+        <circle class="diagram-node" cx="160" cy="94" r="7" />
+        <circle class="diagram-node diagram-node--active" cx="284" cy="94" r="7" />
+        <circle class="diagram-node" cx="408" cy="76" r="7" />
+        <circle class="diagram-node" cx="532" cy="76" r="7" />
+      </svg>
+    )
+  }
+</div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diya-sharma-portfolio.pages.dev/sitemap-index.xml

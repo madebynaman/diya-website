@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageScripts from '../components/PageScripts.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+const email = 'diyasharma.design@gmail.com';
+---
+
+<BaseLayout
+  title="Contact Diya Sharma — Interaction designer"
+  description="Contact Diya Sharma about interaction design, product design, research, and service-system projects."
+>
+  <div class="contact-page">
+    <SiteHeader current="contact" />
+
+    <main id="main">
+      <section class="contact-page-hero" id="top" aria-labelledby="contact-page-title">
+        <div class="contact-page-orbit" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="contact-page-copy">
+          <p class="eyebrow">Let’s collaborate</p>
+          <h1 id="contact-page-title">Tell me where it feels complicated.</h1>
+          <p>
+            Share the project, the people it needs to work for, and where the current experience
+            gets stuck. We can start there.
+          </p>
+
+          <div class="contact-page-direct">
+            <p>Prefer email?</p>
+            <a href={`mailto:${email}`}>{email} <span aria-hidden="true">↗</span></a>
+            <div>
+              <button class="copy-button" type="button" data-copy-email={email}>
+                <span data-copy-label>Copy email</span>
+              </button>
+              <span class="copy-status" aria-live="polite" data-copy-status></span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" data-contact-form>
+          <div class="contact-form__heading">
+            <span aria-hidden="true">✦</span>
+            <div>
+              <p class="eyebrow">Project note</p>
+              <h2>Start a conversation.</h2>
+            </div>
+          </div>
+
+          <div class="contact-form__fields">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+            </label>
+            <label>
+              <span>Company <small>optional</small></span>
+              <input
+                type="text"
+                name="company"
+                autocomplete="organization"
+                placeholder="Where you work"
+              />
+            </label>
+            <label>
+              <span>Email</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+            <label class="contact-form__message">
+              <span>Message</span>
+              <textarea
+                name="message"
+                rows="6"
+                placeholder="A little about the project, its audience, and the challenge…"
+                required></textarea>
+            </label>
+          </div>
+
+          <div class="contact-form__footer">
+            <button class="button button--ink" type="submit"
+              >Draft email <span aria-hidden="true">↗</span></button
+            >
+            <p>Opens your email app with the details above. Nothing is stored on this site.</p>
+          </div>
+          <p class="contact-form__status" aria-live="polite" data-form-status></p>
+        </form>
+      </section>
+    </main>
+
+    <SiteFooter />
+    <PageScripts />
+  </div>
+</BaseLayout>
