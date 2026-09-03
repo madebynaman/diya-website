@@ -7,6 +7,7 @@ export interface StudyMedia {
   ratio?: string;
   fit?: 'contain' | 'cover';
   baseWidth?: number;
+  srcset?: string;
 }
 
 export interface StudyPoint {
@@ -22,6 +23,7 @@ export interface StudyMetric {
 export interface CardMedia {
   src: string;
   alt: string;
+  width?: number;
 }
 
 export interface CaseStudyCard {
@@ -78,10 +80,12 @@ export const caseStudies: CaseStudy[] = [
       primary: {
         src: '/images/jahota-system.webp',
         alt: 'AI-assisted rural healthcare system shown across a tablet, training sheets, and information brochure',
+        width: 1024,
       },
       secondary: {
         src: '/images/jahota-field.webp',
         alt: 'Field research photographs from schools, health centres, and community spaces in Jahota',
+        width: 1100,
       },
       layout: 'forward',
     },
@@ -91,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
       caption: 'The proposed HCDS tablet and fieldworker training system',
       ratio: '1.2 / 1',
       fit: 'contain',
-      baseWidth: 1600,
+      baseWidth: 1024,
     },
     overview: [
       'This project explored how AI could support rural service delivery without intervening directly in villagers’ daily practices. The opportunity was not to add another tool for citizens, but to reduce the administrative load carried by the frontline workers they already trust.',
@@ -331,10 +335,12 @@ export const caseStudies: CaseStudy[] = [
       primary: {
         src: '/images/talktube-system.webp',
         alt: 'Three TalkTube mobile screens for choosing a language, practising speech, and entering the app',
+        width: 1024,
       },
       secondary: {
         src: '/images/talktube-context.webp',
         alt: 'TalkTube mobile screens showing real-world video discovery and contextual word learning',
+        width: 1100,
       },
       layout: 'reverse',
     },
@@ -344,7 +350,7 @@ export const caseStudies: CaseStudy[] = [
       caption: 'TalkTube’s conversation-first mobile experience',
       ratio: '4 / 3',
       fit: 'contain',
-      baseWidth: 1600,
+      baseWidth: 1024,
     },
     overview: [
       'Many language-learning apps emphasise grammar frameworks, isolated vocabulary, and predefined lesson paths. Learners can memorise words yet still struggle to follow or join a real conversation.',
@@ -530,10 +536,12 @@ export const caseStudies: CaseStudy[] = [
       primary: {
         src: '/images/nfhs-system.webp',
         alt: 'Redesigned NFHS fieldwork dashboard displayed on a tablet',
+        width: 1024,
       },
       secondary: {
         src: '/images/nfhs-field.webp',
         alt: 'A fieldworker taking a biomarker measurement during an in-home health survey',
+        width: 1100,
       },
       layout: 'forward',
     },
@@ -543,7 +551,7 @@ export const caseStudies: CaseStudy[] = [
       caption: 'The proposed tablet-first CAPI dashboard',
       ratio: '1.67 / 1',
       fit: 'contain',
-      baseWidth: 1600,
+      baseWidth: 1024,
     },
     overview: [
       'Large-scale surveys such as the National Family Health Survey depend on reliable data collection, but the current workflow asks fieldworkers to coordinate multiple tools, lengthy questionnaires, manual biomarker handling, and delayed supervision.',
@@ -666,6 +674,8 @@ export const caseStudies: CaseStudy[] = [
             caption: 'After: readable, modular questionnaire entry',
             ratio: '1.67 / 1',
             fit: 'contain',
+            srcset:
+              '/images/case-studies/nfhs-questionnaire-1200.webp 1200w, /images/case-studies/nfhs-questionnaire.webp 1800w',
           },
           {
             src: '/images/case-studies/nfhs-software-detail.webp',
@@ -792,10 +802,12 @@ export const caseStudies: CaseStudy[] = [
       primary: {
         src: '/images/tangible-object.webp',
         alt: 'Black, white, and red crocheted cushion translating marriage data into a tactile pattern',
+        width: 1300,
       },
       secondary: {
         src: '/images/tangible-language.webp',
         alt: 'Concept board connecting crochet references to the final red, black, and white pattern system',
+        width: 1100,
       },
       layout: 'reverse',
     },

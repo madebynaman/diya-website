@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+// Production origin. Override with SITE_URL when deploying to a custom domain.
+const site = process.env.SITE_URL ?? 'https://diya-sharma-portfolio.pages.dev';
+
 export default defineConfig({
-  // TODO: set to the production URL before launch
-  site: 'https://diya-sharma-portfolio.pages.dev',
+  site,
   output: 'static',
   build: {
     format: 'file',

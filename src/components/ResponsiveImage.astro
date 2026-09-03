@@ -5,6 +5,7 @@ interface Props extends StudyMedia {
   class?: string;
   priority?: boolean;
   sizes?: string;
+  srcset?: string;
 }
 
 const {
@@ -17,14 +18,16 @@ const {
   class: className,
   priority = false,
   sizes = '(max-width: 820px) calc(100vw - 2rem), min(76vw, 1100px)',
+  srcset: srcsetOverride,
 } = Astro.props;
 
 const stem = src.replace(/\.webp$/, '');
 const isCaseAsset = src.includes('/case-studies/');
 const fallbackWidth = isCaseAsset ? 1800 : baseWidth;
-const srcset = isCaseAsset
+const generatedSrcset = isCaseAsset
   ? `${stem}-640.webp 640w, ${stem}-1200.webp 1200w, ${src} ${fallbackWidth}w`
   : `${stem}-480.webp 480w, ${stem}-900.webp 900w, ${src} ${fallbackWidth}w`;
+const srcset = srcsetOverride ?? generatedSrcset;
 ---
 
 <figure

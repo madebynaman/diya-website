@@ -21,6 +21,7 @@ const next = caseStudies[(currentIndex + 1) % caseStudies.length];
   title={`${study.title} — Diya Sharma`}
   description={study.summary}
   ogImage={study.hero.src}
+  ogImageAlt={study.hero.alt}
 >
   <div class:list={['case-study', `case-study--${study.theme}`]}>
     <SiteHeader current="project" />

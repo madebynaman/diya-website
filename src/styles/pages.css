@@ -32,7 +32,7 @@
 .study-media figcaption {
   margin-top: 0.85rem;
   color: rgba(23, 20, 39, 0.68);
-  font: 500 0.66rem/1.45 var(--mono);
+  font: 500 0.72rem/1.45 var(--mono);
 }
 
 /* Case study theming */
@@ -178,7 +178,7 @@
 }
 
 .case-study--talktube .case-hero__summary {
-  color: rgba(248, 247, 251, 0.84);
+  color: var(--paper);
 }
 
 .case-scope {
@@ -194,7 +194,7 @@
   padding: 0.62rem 0.72rem;
   border: 1.5px solid currentColor;
   border-radius: 999px;
-  font: 500 0.62rem/1 var(--mono);
+  font: 500 0.7rem/1 var(--mono);
 }
 
 .case-hero__visual {
@@ -304,7 +304,7 @@
 .case-index__label {
   margin-bottom: 1.15rem;
   color: rgba(23, 20, 39, 0.7);
-  font: 500 0.64rem/1 var(--mono);
+  font: 500 0.7rem/1 var(--mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -334,7 +334,7 @@
   gap: 0.65rem;
   align-items: center;
   padding: 0.48rem 0;
-  font: 550 0.7rem/1.3 var(--body);
+  font: 550 0.74rem/1.3 var(--body);
   text-decoration: none;
 }
 
@@ -569,7 +569,7 @@
   color: var(--paper);
   background: var(--ink);
   border-radius: 0.3rem;
-  font: 500 0.56rem/1 var(--mono);
+  font: 500 0.68rem/1 var(--mono);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -648,7 +648,7 @@
 }
 
 .case-pagination span {
-  font: 500 0.66rem/1 var(--mono);
+  font: 500 0.7rem/1 var(--mono);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -948,7 +948,7 @@
 
 .about-page-role p,
 .about-page-role time {
-  font: 500 0.66rem/1.4 var(--mono);
+  font: 500 0.7rem/1.4 var(--mono);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -1126,7 +1126,7 @@
 
 .contact-page-direct > p {
   margin-bottom: 0.8rem;
-  font: 500 0.66rem/1 var(--mono);
+  font: 500 0.7rem/1 var(--mono);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -1226,7 +1226,7 @@
 
 .contact-form label small {
   color: rgba(23, 20, 39, 0.7);
-  font: 400 0.6rem/1 var(--mono);
+  font: 400 0.68rem/1 var(--mono);
   text-transform: uppercase;
 }
 
@@ -1256,7 +1256,8 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 0;
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
   background: #fffdf0;
   box-shadow: 4px 4px 0 var(--mango);
 }
@@ -1276,14 +1277,14 @@
   max-width: 35ch;
   margin: 0;
   color: rgba(23, 20, 39, 0.7);
-  font: 400 0.63rem/1.5 var(--mono);
+  font: 400 0.7rem/1.5 var(--mono);
 }
 
 .contact-form__status {
   min-height: 1.3em;
   margin: 1rem 0 0;
   color: #3b45d0;
-  font: 500 0.66rem/1.3 var(--mono);
+  font: 500 0.72rem/1.3 var(--mono);
 }
 
 /* Interior-page responsiveness */
@@ -1538,7 +1539,7 @@
   }
 
   .case-index a {
-    font-size: 0.62rem;
+    font-size: 0.68rem;
   }
 
   .case-section__heading h2 {

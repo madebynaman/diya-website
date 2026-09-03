@@ -66,6 +66,7 @@ const projects = caseStudies.map((study) => ({
 
       <div
         class="hero-collage"
+        role="group"
         aria-label="A portrait of Diya and details from her work"
         data-parallax-scope
       >
@@ -73,7 +74,7 @@ const projects = caseStudies.map((study) => ({
           <img
             src="/images/diya-portrait.webp"
             srcset="/images/diya-portrait-480.webp 480w, /images/diya-portrait-900.webp 900w, /images/diya-portrait.webp 1100w"
-            sizes="(max-width: 820px) 62vw, min(23vw, 330px)"
+            sizes="(max-width: 820px) min(62vw, 387px), (max-width: 1120px) 25vw, min(23vw, 325px)"
             alt="Diya Sharma smiling against a textured brown wall"
             width="1100"
             height="1955"
@@ -86,7 +87,7 @@ const projects = caseStudies.map((study) => ({
           <img
             src="/images/jahota-field.webp"
             srcset="/images/jahota-field-480.webp 480w, /images/jahota-field-900.webp 900w, /images/jahota-field.webp 1100w"
-            sizes="(max-width: 820px) 49vw, min(19vw, 270px)"
+            sizes="(max-width: 820px) min(49vw, 306px), (max-width: 1120px) 20vw, min(19vw, 265px)"
             alt="Field research moments from Jahota"
           />
           <figcaption>In the field</figcaption>
@@ -96,7 +97,7 @@ const projects = caseStudies.map((study) => ({
           <img
             src="/images/tangible-object.webp"
             srcset="/images/tangible-object-480.webp 480w, /images/tangible-object-900.webp 900w, /images/tangible-object.webp 1300w"
-            sizes="(max-width: 820px) 50vw, min(19vw, 270px)"
+            sizes="(max-width: 820px) min(50vw, 312px), (max-width: 1120px) 20vw, min(19vw, 270px)"
             alt="Crocheted tangible data representation"
           />
           <figcaption>At the making table</figcaption>
@@ -108,7 +109,7 @@ const projects = caseStudies.map((study) => ({
         </div>
       </div>
 
-      <div class="hero-footer" aria-label="Core capabilities">
+      <div class="hero-footer" role="group" aria-label="Core capabilities">
         <p>Working across</p>
         <ul>
           <li>Research</li>
@@ -130,10 +131,14 @@ const projects = caseStudies.map((study) => ({
       </div>
 
       <nav class="project-key" aria-label="Jump to a project" data-reveal>
-        <a href="#jahota"><i class="key-dot key-dot--jahota"></i>Rural AI</a>
-        <a href="#talktube"><i class="key-dot key-dot--talktube"></i>TalkTube</a>
-        <a href="#nfhs"><i class="key-dot key-dot--nfhs"></i>NFHS</a>
-        <a href="#tangible"><i class="key-dot key-dot--tangible"></i>Tangible data</a>
+        {
+          caseStudies.map((study) => (
+            <a href={`#${study.slug}`}>
+              <i class={`key-dot key-dot--${study.theme}`} />
+              {study.shortTitle}
+            </a>
+          ))
+        }
       </nav>
 
       <div class="project-list">
@@ -199,7 +204,7 @@ const projects = caseStudies.map((study) => ({
           <img
             src="/images/diya-portrait.webp"
             srcset="/images/diya-portrait-480.webp 480w, /images/diya-portrait-900.webp 900w, /images/diya-portrait.webp 1100w"
-            sizes="(max-width: 820px) 72vw, min(30vw, 450px)"
+            sizes="(max-width: 540px) 72vw, (max-width: 820px) 60vw, min(25vw, 350px)"
             alt="Portrait of Diya Sharma"
             loading="lazy"
             decoding="async"

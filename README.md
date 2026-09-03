@@ -41,6 +41,11 @@ For Cloudflare Pages:
 - Output directory: `dist`
 - Node.js: 20 or later
 
+The canonical URL, sitemap, and Open Graph tags are derived from the configured
+site URL. It defaults to `https://diya-sharma-portfolio.pages.dev` (which is
+also hardcoded in `public/robots.txt`); when deploying to a custom domain, set
+`SITE_URL` before building and update `public/robots.txt` to match.
+
 The included `wrangler.jsonc` also supports Workers Static Assets deployment:
 
 ```bash
